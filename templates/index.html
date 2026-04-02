@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WriteGenie AI — Premium AI Writing Tools</title>
+    <meta name="description" content="Generate professional emails, social media posts, product descriptions, blog posts, and ad copy instantly with AI. Powered by advanced language models.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="bg-animation">
+        <div class="bg-orb bg-orb-1"></div>
+        <div class="bg-orb bg-orb-2"></div>
+        <div class="bg-orb bg-orb-3"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">
+                <span class="logo-icon">✦</span>
+                <span class="logo-text">WriteGenie<span class="logo-ai">AI</span></span>
+            </a>
+            <div class="nav-links">
+                <a href="#tools" class="nav-link">Tools</a>
+                <a href="#pricing" class="nav-link">Pricing</a>
+                <a href="#stats" class="nav-link">Stats</a>
+            </div>
+            <div class="nav-actions">
+                <span class="status-badge" id="apiStatus">
+                    <span class="status-dot"></span>
+                    AI Online
+                </span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <div class="hero-badge">⚡ Powered by Advanced AI</div>
+            <h1 class="hero-title">
+                Write <span class="gradient-text">10x Faster</span><br>
+                With AI Superpowers
+            </h1>
+            <p class="hero-subtitle">
+                Generate professional emails, viral social posts, SEO blog articles,
+                high-converting ad copy, and stunning product descriptions — all in seconds.
+            </p>
+            <div class="hero-cta">
+                <a href="#tools" class="btn btn-primary btn-lg">
+                    <span>Start Writing Free</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+                <div class="hero-stats-row">
+                    <div class="hero-stat">
+                        <span class="hero-stat-num" id="heroGenerations">0</span>
+                        <span class="hero-stat-label">Generations</span>
+                    </div>
+                    <div class="hero-stat">
+                        <span class="hero-stat-num" id="heroWords">0</span>
+                        <span class="hero-stat-label">Words Written</span>
+                    </div>
+                    <div class="hero-stat">
+                        <span class="hero-stat-num">6</span>
+                        <span class="hero-stat-label">AI Tools</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="floating-card card-1">
+                <div class="fc-icon">📧</div>
+                <div class="fc-text">Email Generated!</div>
+            </div>
+            <div class="floating-card card-2">
+                <div class="fc-icon">📱</div>
+                <div class="fc-text">Post Ready!</div>
+            </div>
+            <div class="floating-card card-3">
+                <div class="fc-icon">🚀</div>
+                <div class="fc-text">Ad Copy Done!</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tools Section -->
+    <section class="tools-section" id="tools">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-badge">AI Writing Suite</span>
+                <h2 class="section-title">Choose Your Writing Tool</h2>
+                <p class="section-desc">Select a tool below and let AI craft perfect content for you in seconds.</p>
+            </div>
+
+            <!-- Tool Selector Tabs -->
+            <div class="tool-tabs" id="toolTabs">
+                <button class="tool-tab active" data-tool="email" id="tab-email">
+                    <span class="tab-icon">📧</span>
+                    <span class="tab-label">Email Writer</span>
+                </button>
+                <button class="tool-tab" data-tool="social" id="tab-social">
+                    <span class="tab-icon">📱</span>
+                    <span class="tab-label">Social Post</span>
+                </button>
+                <button class="tool-tab" data-tool="product" id="tab-product">
+                    <span class="tab-icon">🛍️</span>
+                    <span class="tab-label">Product Desc</span>
+                </button>
+                <button class="tool-tab" data-tool="blog" id="tab-blog">
+                    <span class="tab-icon">📝</span>
+                    <span class="tab-label">Blog Post</span>
+                </button>
+                <button class="tool-tab" data-tool="ad" id="tab-ad">
+                    <span class="tab-icon">📢</span>
+                    <span class="tab-label">Ad Copy</span>
+                </button>
+                <button class="tool-tab" data-tool="rewrite" id="tab-rewrite">
+                    <span class="tab-icon">✨</span>
+                    <span class="tab-label">Rewriter</span>
+                </button>
+            </div>
+
+            <!-- Tool Panels -->
+            <div class="tool-workspace">
+                <!-- EMAIL WRITER -->
+                <div class="tool-panel active" id="panel-email">
+                    <div class="panel-grid">
+                        <div class="panel-inputs">
+                            <h3 class="panel-title">📧 Business Email Writer</h3>
+                            <p class="panel-desc">Generate persuasive, professional emails that get responses.</p>
+                            <div class="input-group">
+                                <label>Recipient / Company</label>
+                                <input type="text" id="email-recipient" placeholder="e.g., Marketing Director at Nike" class="input-field">
+                            </div>
+                            <div class="input-group">
+                                <label>Email Purpose</label>
+                                <select id="email-purpose" class="input-field">
+                                    <option value="cold outreach">Cold Outreach / Sales</option>
+                                    <option value="follow-up">Follow-Up</option>
+                                    <option value="partnership proposal">Partnership Proposal</option>
+                                    <option value="job application">Job Application</option>
+                                    <option value="client update">Client Update</option>
+                                    <option value="meeting request">Meeting Request</option>
+                                    <option value="thank you">Thank You / Appreciation</option>
+                                </select>
+                            </div>
+                            <div class="input-group">
+                                <label>Tone</label>
+                                <div class="tone-buttons">
+                                    <button class="tone-btn active" data-tone="professional">Professional</button>
+                                    <button class="tone-btn" data-tone="friendly">Friendly</button>
+                                    <button class="tone-btn" data-tone="urgent">Urgent</button>
+                                    <button class="tone-btn" data-tone="casual">Casual</button>
+                                </div>
+                            </div>
+                            <div class="input-group">
+                                <label>Additional Details</label>
+                                <textarea id="email-details" placeholder="Any specific points you want to include..." class="input-field textarea-field" rows="3"></textarea>
+                            </div>
+                            <button class="btn btn-generate" onclick="generateContent('email')" id="btn-generate-email">
+                                <span class="btn-text">Generate Email</span>
+                                <span class="btn-loader"></span>
+                            </button>
+                        </div>
+                        <div class="panel-output">
+                            <div class="output-header">
+                                <h4>Generated Result</h4>
+                                <div class="output-actions">
+                                    <button class="action-btn" onclick="copyResult()" title="Copy to clipboard" id="btn-copy">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                                        Copy
+                                    </button>
+                                    <button class="action-btn" onclick="downloadResult()" title="Download" id="btn-download">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                                        Download
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="output-body" id="outputArea">
+                                <div class="output-placeholder">
+                                    <div class="placeholder-icon">✨</div>
+                                    <p>Your AI-generated content will appear here.</p>
+                                    <p class="placeholder-sub">Fill in the form and click Generate!</p>
+                                </div>
+                            </div>
+                            <div class="output-meta" id="outputMeta" style="display:none;">
+                                <span class="meta-badge"><span id="wordCount">0</span> words</span>
+                                <span class="meta-badge">Generated in <span id="genTime">0</span>s</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SOCIAL POST -->
+                <div class="tool-panel" id="panel-social">
+                    <div class="panel-grid">
+                        <div class="panel-inputs">
+                            <h3 class="panel-title">📱 Social Media Post Generator</h3>
+                            <p class="panel-desc">Create viral, engagement-optimized posts for any platform.</p>
+                            <div class="input-group">
+                                <label>Platform</label>
+                                <div class="platform-buttons">
+                                    <button class="platform-btn active" data-platform="LinkedIn">LinkedIn</button>
+                                    <button class="platform-btn" data-platform="Twitter/X">Twitter/X</button>
+                                    <button class="platform-btn" data-platform="Instagram">Instagram</button>
+                                    <button class="platform-btn" data-platform="Facebook">Facebook</button>
+                                </div>
+                            </div>
+                            <div class="input-group">
+                                <label>Topic / Subject</label>
+                                <input type="text" id="social-topic" placeholder="e.g., AI transforming small businesses" class="input-field">
+                            </div>
+                            <div class="input-group">
+                                <label>Tone</label>
+                                <select id="social-tone" class="input-field">
+                                    <option value="professional">Professional</option>
+                                    <option value="inspirational">Inspirational</option>
+                                    <option value="humorous">Humorous</option>
+                                    <option value="educational">Educational</option>
+                                    <option value="storytelling">Storytelling</option>
+                                </select>
+                            </div>
+                            <div class="input-group">
+                                <label>Additional Context</label>
+                                <textarea id="social-details" placeholder="Key points, personal experience, data to include..." class="input-field textarea-field" rows="3"></textarea>
+                            </div>
+                            <button class="btn btn-generate" onclick="generateContent('social')" id="btn-generate-social">
+                                <span class="btn-text">Generate Post</span>
+                                <span class="btn-loader"></span>
+                            </button>
+                        </div>
+                        <div class="panel-output">
+                            <div class="output-header">
+                                <h4>Generated Result</h4>
+                                <div class="output-actions">
+                                    <button class="action-btn" onclick="copyResult()" title="Copy"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Copy</button>
+                                    <button class="action-btn" onclick="downloadResult()" title="Download"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Download</button>
+                                </div>
+                            </div>
+                            <div class="output-body" id="outputArea-social">
+                                <div class="output-placeholder">
+                                    <div class="placeholder-icon">📱</div>
+                                    <p>Your viral post will appear here.</p>
+                                    <p class="placeholder-sub">Select a platform and topic to get started!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PRODUCT DESCRIPTION -->
+                <div class="tool-panel" id="panel-product">
+                    <div class="panel-grid">
+                        <div class="panel-inputs">
+                            <h3 class="panel-title">🛍️ Product Description Writer</h3>
+                            <p class="panel-desc">Create compelling product descriptions that convert browsers into buyers.</p>
+                            <div class="input-group">
+                                <label>Product Name</label>
+                                <input type="text" id="product-name" placeholder="e.g., Premium Wireless Headphones" class="input-field">
+                            </div>
+                            <div class="input-group">
+                                <label>Category</label>
+                                <input type="text" id="product-category" placeholder="e.g., Electronics, Fashion, Home" class="input-field">
+                            </div>
+                            <div class="input-group">
+                                <label>Key Features</label>
+                                <textarea id="product-features" placeholder="List the main features, specs, materials..." class="input-field textarea-field" rows="3"></textarea>
+                            </div>
+                            <div class="input-group">
+                                <label>Target Audience</label>
+                                <input type="text" id="product-audience" placeholder="e.g., Tech-savvy professionals, Fitness enthusiasts" class="input-field">
+                            </div>
+                            <button class="btn btn-generate" onclick="generateContent('product')" id="btn-generate-product">
+                                <span class="btn-text">Generate Description</span>
+                                <span class="btn-loader"></span>
+                            </button>
+                        </div>
+                        <div class="panel-output">
+                            <div class="output-header">
+                                <h4>Generated Result</h4>
+                                <div class="output-actions">
+                                    <button class="action-btn" onclick="copyResult()">📋 Copy</button>
+                                    <button class="action-btn" onclick="downloadResult()">💾 Download</button>
+                                </div>
+                            </div>
+                            <div class="output-body" id="outputArea-product">
+                                <div class="output-placeholder">
+                                    <div class="placeholder-icon">🛍️</div>
+                                    <p>Your product description will appear here.</p>
+                                    <p class="placeholder-sub">Enter your product details to generate!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BLOG POST -->
+                <div class="tool-panel" id="panel-blog">
+                    <div class="panel-grid">
+                        <div class="panel-inputs">
+                            <h3 class="panel-title">📝 Blog Post Generator</h3>
+                            <p class="panel-desc">Create SEO-optimized, engaging blog content that ranks and converts.</p>
+                            <div class="input-group">
+                                <label>Blog Title / Topic</label>
+                                <input type="text" id="blog-title" placeholder="e.g., 10 Ways AI is Changing Digital Marketing in 2026" class="input-field">
+                            </div>
+                            <div class="input-group">
+                                <label>Niche / Industry</label>
+                                <input type="text" id="blog-niche" placeholder="e.g., Digital Marketing, Health & Fitness" class="input-field">
+                            </div>
+                            <div class="input-group">
+                                <label>Target Keywords (SEO)</label>
+                                <input type="text" id="blog-keywords" placeholder="e.g., AI marketing tools, automation, digital strategy" class="input-field">
+                            </div>
+                            <div class="input-group">
+                                <label>Article Length</label>
+                                <div class="length-buttons">
+                                    <button class="length-btn" data-length="short">Short (500-700)</button>
+                                    <button class="length-btn active" data-length="medium">Medium (800-1200)</button>
+                                    <button class="length-btn" data-length="long">Long (1500-2000)</button>
+                                </div>
+                            </div>
+                            <button class="btn btn-generate" onclick="generateContent('blog')" id="btn-generate-blog">
+                                <span class="btn-text">Generate Blog Post</span>
+                                <span class="btn-loader"></span>
+                            </button>
+                        </div>
+                        <div class="panel-output">
+                            <div class="output-header">
+                                <h4>Generated Result</h4>
+                                <div class="output-actions">
+                                    <button class="action-btn" onclick="copyResult()">📋 Copy</button>
+                                    <button class="action-btn" onclick="downloadResult()">💾 Download</button>
+                                </div>
+                            </div>
+                            <div class="output-body" id="outputArea-blog">
+                                <div class="output-placeholder">
+                                    <div class="placeholder-icon">📝</div>
+                                    <p>Your blog post will appear here.</p>
+                                    <p class="placeholder-sub">Enter a topic and let AI write for you!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AD COPY -->
+                <div class="tool-panel" id="panel-ad">
+                    <div class="panel-grid">
+                        <div class="panel-inputs">
+                            <h3 class="panel-title">📢 Ad Copy Generator</h3>
+                            <p class="panel-desc">Create high-converting ad copy with A/B test variations.</p>
+                            <div class="input-group">
+                                <label>Product / Service</label>
+                                <input type="text" id="ad-product" placeholder="e.g., Online Fitness Coaching Program" class="input-field">
+                            </div>
+                            <div class="input-group">
+                                <label>Ad Platform</label>
+                                <div class="platform-buttons">
+                                    <button class="platform-btn active" data-platform="Facebook/Instagram">Facebook</button>
+                                    <button class="platform-btn" data-platform="Google Ads">Google</button>
+                                    <button class="platform-btn" data-platform="LinkedIn Ads">LinkedIn</button>
+                                    <button class="platform-btn" data-platform="TikTok">TikTok</button>
+                                </div>
+                            </div>
+                            <div class="input-group">
+                                <label>Campaign Objective</label>
+                                <select id="ad-objective" class="input-field">
+                                    <option value="conversions">Conversions / Sales</option>
+                                    <option value="lead generation">Lead Generation</option>
+                                    <option value="brand awareness">Brand Awareness</option>
+                                    <option value="app installs">App Installs</option>
+                                    <option value="traffic">Website Traffic</option>
+                                </select>
+                            </div>
+                            <div class="input-group">
+                                <label>Target Audience</label>
+                                <input type="text" id="ad-audience" placeholder="e.g., Women 25-45, interested in wellness" class="input-field">
+                            </div>
+                            <button class="btn btn-generate" onclick="generateContent('ad')" id="btn-generate-ad">
+                                <span class="btn-text">Generate Ad Copy</span>
+                                <span class="btn-loader"></span>
+                            </button>
+                        </div>
+                        <div class="panel-output">
+                            <div class="output-header">
+                                <h4>Generated Result</h4>
+                                <div class="output-actions">
+                                    <button class="action-btn" onclick="copyResult()">📋 Copy</button>
+                                    <button class="action-btn" onclick="downloadResult()">💾 Download</button>
+                                </div>
+                            </div>
+                            <div class="output-body" id="outputArea-ad">
+                                <div class="output-placeholder">
+                                    <div class="placeholder-icon">📢</div>
+                                    <p>Your ad copy variations will appear here.</p>
+                                    <p class="placeholder-sub">Describe your product and target audience!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CONTENT REWRITER -->
+                <div class="tool-panel" id="panel-rewrite">
+                    <div class="panel-grid">
+                        <div class="panel-inputs">
+                            <h3 class="panel-title">✨ Content Rewriter & Enhancer</h3>
+                            <p class="panel-desc">Paste any text and let AI transform it into polished, professional content.</p>
+                            <div class="input-group">
+                                <label>Original Text</label>
+                                <textarea id="rewrite-original" placeholder="Paste the text you want to improve here..." class="input-field textarea-field" rows="6"></textarea>
+                            </div>
+                            <div class="input-group">
+                                <label>Rewrite Style</label>
+                                <select id="rewrite-style" class="input-field">
+                                    <option value="professional">Professional & Polished</option>
+                                    <option value="casual">Casual & Friendly</option>
+                                    <option value="academic">Academic & Formal</option>
+                                    <option value="creative">Creative & Engaging</option>
+                                    <option value="concise">Concise & Clear</option>
+                                    <option value="persuasive">Persuasive & Sales-focused</option>
+                                </select>
+                            </div>
+                            <div class="input-group">
+                                <label>Special Instructions</label>
+                                <input type="text" id="rewrite-instruction" placeholder="e.g., Make it shorter, add humor, simplify language" class="input-field">
+                            </div>
+                            <button class="btn btn-generate" onclick="generateContent('rewrite')" id="btn-generate-rewrite">
+                                <span class="btn-text">Rewrite Content</span>
+                                <span class="btn-loader"></span>
+                            </button>
+                        </div>
+                        <div class="panel-output">
+                            <div class="output-header">
+                                <h4>Generated Result</h4>
+                                <div class="output-actions">
+                                    <button class="action-btn" onclick="copyResult()">📋 Copy</button>
+                                    <button class="action-btn" onclick="downloadResult()">💾 Download</button>
+                                </div>
+                            </div>
+                            <div class="output-body" id="outputArea-rewrite">
+                                <div class="output-placeholder">
+                                    <div class="placeholder-icon">✨</div>
+                                    <p>Your rewritten content will appear here.</p>
+                                    <p class="placeholder-sub">Paste text above and click Rewrite!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing-section" id="pricing">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-badge">Pricing</span>
+                <h2 class="section-title">Simple, Transparent Pricing</h2>
+                <p class="section-desc">Start free, upgrade when you need more power.</p>
+            </div>
+            <div class="pricing-grid">
+                <div class="price-card">
+                    <div class="price-tier">Free</div>
+                    <div class="price-amount">$0<span>/month</span></div>
+                    <ul class="price-features">
+                        <li>✓ 10 generations per day</li>
+                        <li>✓ All 6 writing tools</li>
+                        <li>✓ Copy & download results</li>
+                        <li>✗ Priority AI processing</li>
+                        <li>✗ API access</li>
+                    </ul>
+                    <button class="btn btn-outline" onclick="scrollToTools()">Get Started Free</button>
+                </div>
+                <div class="price-card featured">
+                    <div class="price-popular">Most Popular</div>
+                    <div class="price-tier">Pro</div>
+                    <div class="price-amount">$9<span>/month</span></div>
+                    <ul class="price-features">
+                        <li>✓ Unlimited generations</li>
+                        <li>✓ All 6 writing tools</li>
+                        <li>✓ Priority AI processing</li>
+                        <li>✓ Export to PDF/Word</li>
+                        <li>✓ Email support</li>
+                    </ul>
+                    <button class="btn btn-primary" onclick="scrollToTools()">Start Pro Trial</button>
+                </div>
+                <div class="price-card">
+                    <div class="price-tier">Business</div>
+                    <div class="price-amount">$29<span>/month</span></div>
+                    <ul class="price-features">
+                        <li>✓ Everything in Pro</li>
+                        <li>✓ API access</li>
+                        <li>✓ Team collaboration</li>
+                        <li>✓ Custom AI training</li>
+                        <li>✓ Priority support</li>
+                    </ul>
+                    <button class="btn btn-outline" onclick="scrollToTools()">Contact Sales</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section" id="stats">
+        <div class="section-container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number" id="statGenerations">0</div>
+                    <div class="stat-label">Total Generations</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="statWords">0</div>
+                    <div class="stat-label">Words Generated</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">6</div>
+                    <div class="stat-label">AI Tools Available</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Always Online</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="section-container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="logo-icon">✦</span>
+                    <span class="logo-text">WriteGenie<span class="logo-ai">AI</span></span>
+                    <p class="footer-tagline">Premium AI Writing Tools for Everyone</p>
+                </div>
+                <div class="footer-copy">
+                    &copy; 2026 WriteGenie AI. All rights reserved.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <span class="toast-icon">✓</span>
+        <span class="toast-text" id="toastText">Copied to clipboard!</span>
+    </div>
+
+    <script src="/static/js/app.js"></script>
+</body>
+</html>
